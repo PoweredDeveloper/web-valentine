@@ -1,0 +1,24 @@
+.heart-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.heart-float-delay {
+  animation: float 3s ease-in-out infinite 0.5s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 50%, #9f1239 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

@@ -1,0 +1,34 @@
+# Env
+.env
+.env.local
+.env.*.local
+
+# Python
+.venv
+venv
+__pycache__
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+.eggs
+*.egg-info
+*.egg
+
+# IDE / OS
+.idea
+.vscode
+.DS_Store
+*.swp
+*.swo
+
+# Docker
+.docker
+
+# Misc
+*.log
+.pytest_cache
+.mypy_cache
+.coverage
+htmlcov
