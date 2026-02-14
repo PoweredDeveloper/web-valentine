@@ -8,8 +8,8 @@ const TEXTS = {
     ask1: 'Ты уверена?',
     ask2: 'Точно? Последний шанс!',
     button1: 'Да, уверена',
-    button2: 'Да, отказываюсь',
-    buttonInitial: 'Может, в другой раз',
+    button2: 'Точно нет',
+    buttonInitial: 'Нет',
   },
 }
 

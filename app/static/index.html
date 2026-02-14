@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Ты не против быть моей валентинкой?</title>
+    <title>Валентинка</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,17 +25,17 @@
     </script>
   </head>
   <body class="page-bg min-h-screen font-sans flex flex-col items-center justify-center p-6">
-    <main class="valentine-card text-center max-w-xl">
-      <p class="intro-text text-stone-700 max-w-lg lg:max-w-xl mx-auto">
-        Мы не так давно знакомы, но мне нравится с тобой общаться — и я хотел спросить
+    <main class="valentine-card text-center max-w-xl select-none">
+      <p class="intro-text text-stone-600 font-semibold text-center">
+        Мы не так давно знакомы, но мне нравится с тобой общаться. И я хотел спросить
         <img class="inline-block h-[1.2em] w-auto align-middle -translate-y-px" src="/emoji.webp" alt="" />
         <img class="inline-block h-[1.2em] w-auto align-middle -translate-y-px" src="/emoji.webp" alt="" />
       </p>
-      <h2 class="main-question font-serif font-semibold text-nowrap font-thin">Ты не против быть моей <span class="accent-text font-cursive">валентинкой?</span></h2>
+      <h2 class="main-question text-4xl sm:text-5xl font-serif font-extralight">Ты не против быть моей <span class="accent-text font-cursive">валентинкой?</span></h2>
 
       <div id="buttons" class="flex flex-wrap gap-4 justify-center mt-8">
-        <button type="button" id="btn-yes" class="btn-yes px-6 py-3 sm:px-8 sm:py-3.5 rounded-xl text-white font-medium text-base sm:text-lg transition-colors duration-200 focus:outline-none">Да!</button>
-        <button type="button" id="btn-no" class="btn-no px-6 py-3 sm:px-8 sm:py-3.5 rounded-xl font-medium text-base sm:text-lg border-2 transition-colors duration-200 focus:outline-none">Может, в другой раз</button>
+        <button type="button" id="btn-yes" class="btn-yes px-4 py-2 sm:px-8 sm:py-3.5 rounded-xl text-white font-medium text-base sm:text-lg transition-colors duration-200 focus:outline-none">Да, конечно!</button>
+        <button type="button" id="btn-no" class="btn-no px-4 py-2 sm:px-8 sm:py-3.5 rounded-xl font-medium text-base sm:text-lg border-2 transition-colors duration-200 focus:outline-none">Нет</button>
       </div>
 
       <p id="feedback" class="mt-6 text-stone-500 text-sm hidden" aria-live="polite"></p>
