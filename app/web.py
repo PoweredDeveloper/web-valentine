@@ -1,3 +1,6 @@
+import asyncio
+import logging
+import os
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -9,6 +12,7 @@ from pydantic import BaseModel
 
 from app import telegram_bot
 
+logging.getLogger("app").setLevel(logging.INFO)
 static_dir = Path(__file__).resolve().parent / "static"
 
 # Rate limit: one submission per IP per 60 seconds
@@ -31,11 +35,16 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
-app.mount("/", StaticFiles(directory=str(static_dir), html=True), name="static")
 
 
 class ValentineResponse(BaseModel):
     agreed: bool
+
+
+@app.get("/api/config")
+async def get_config():
+    handle = (os.getenv("TELEGRAM_HANDLE") or "").strip().lstrip("@")
+    return {"telegramHandle": handle or None}
 
 
 @app.post("/api/send-response")
@@ -49,8 +58,9 @@ async def send_response(request: Request, body: ValentineResponse):
         )
     _submissions[ip] = now
 
-    if body.agreed:
-        await telegram_bot.send_message("💕 Valentine said YES to being your valentine!")
-    else:
-        await telegram_bot.send_message("😢 Valentine said no to being your valentine.")
+    text = "💕 Valentine said YES to being your valentine!" if body.agreed else "😢 Valentine said no to being your valentine."
+    asyncio.create_task(telegram_bot.send_message(text))
     return JSONResponse({"success": True})
+
+
+app.mount("/", StaticFiles(directory=str(static_dir), html=True), name="static")

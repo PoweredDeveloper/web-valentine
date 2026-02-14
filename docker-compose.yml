@@ -1,7 +1,10 @@
+# Run from project root so .env (same folder as this file) is found.
+# Create .env with TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID if missing.
 services:
   app:
     build: .
-    env_file: .env
+    env_file:
+      - .env
     restart: unless-stopped
 
   nginx:
