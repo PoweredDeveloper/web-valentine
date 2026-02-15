@@ -1,26 +1,38 @@
-# Valentine page
+![Web page preview](/imgs/preview.png)
+
+# 💕 Web Valentine
 
 A single-page “Will you be my valentine?” site. One tap for yes, one for no. **Yes** sends you a Telegram notification and triggers confetti; **No** asks for confirmation twice. Built for a bit of fun, not for production hardening.
 
-**Stack:** FastAPI, static HTML/CSS/JS, Aiogram (Telegram), optional Docker + nginx.
+**Stack:** FastAPI, static HTML/CSS/JS, Aiogram (Telegram), optional Docker + nginx. **Requires Python 3.12+.**
 
 ---
 
-## Run locally
+## 🚀 Run locally
 
-From the project root:
+**Requirements:** Python 3.12+ (check with `python3 --version`).
+
+In a terminal, from the project root:
 
 ```bash
-pip install -r requirements.txt
-cp .env.example .env   # add your Telegram token and chat ID
-python -m app.main
+# Create a virtual environment and install dependencies
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+
+# (Optional) Telegram notifications — copy and add your token/chat ID to .env
+cp .env.example .env
+
+# Start the server
+.venv/bin/python -m app.main
 ```
 
-Open **http://localhost:8000**.
+**Windows (PowerShell):** use `.venv\Scripts\pip` and `.venv\Scripts\python` instead of `.venv/bin/...`.
+
+Open **http://localhost:8000**. The page works without `.env`; Telegram is only needed for “Yes” notifications.
 
 ---
 
-## Run with Docker
+## 🐳 Run with Docker
 
 From the project root (same folder as `docker-compose.yml` and `.env`):
 
@@ -34,7 +46,7 @@ Optional: for HTTPS, put certs in `/opt/ssl` and adjust `nginx/nginx.conf` as ne
 
 ---
 
-## Environment (`.env`)
+## ⚙️ Environment (`.env`)
 
 | Variable             | Description                                                                                                                               |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +56,7 @@ Optional: for HTTPS, put certs in `/opt/ssl` and adjust `nginx/nginx.conf` as ne
 
 ---
 
-## Project layout
+## 📁 Project layout
 
 ```
 ├── app/
