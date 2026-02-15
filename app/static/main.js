@@ -1,15 +1,15 @@
 const TEXTS = {
   feedback: {
-    yes: 'Ура! Спасибо!',
-    no: 'Ничего страшного, спасибо за ответ.',
-    error: 'Что-то пошло не так. Попробуй ещё раз?',
+    yes: 'Hooray! Thank you!',
+    no: 'No worries, thanks for your answer.',
+    error: 'Something went wrong. Try again?',
   },
   noConfirm: {
-    ask1: 'Ты уверена?',
-    ask2: 'Точно? Последний шанс!',
-    button1: 'Да, уверена',
-    button2: 'Точно нет',
-    buttonInitial: 'Нет',
+    ask1: 'Are you sure?',
+    ask2: 'Really? Last chance!',
+    button1: "Yes, I'm sure",
+    button2: 'Definitely not',
+    buttonInitial: 'No',
   },
 }
 
@@ -61,9 +61,10 @@ async function submit(agreed) {
     const data = await res.json()
     if (res.ok && data.success) {
       if (agreed && typeof confetti === 'function') {
-        confetti({ particleCount: 120, spread: 70, origin: { y: 0.7 } })
+        const pastels = ['#f8b4c4', '#e8c4e0', '#c4e0e8', '#e8e4c4', '#d4c4e8', '#ffdfba', '#bae1ff']
+        confetti({ particleCount: 120, spread: 70, origin: { y: 0.7 }, colors: pastels })
         setTimeout(() => {
-          confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 }, colors: ['#6b3a3e', '#e8dfd4', '#292524'] })
+          confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 }, colors: pastels })
         }, 200)
       }
       setFeedback(agreed ? TEXTS.feedback.yes : TEXTS.feedback.no)
