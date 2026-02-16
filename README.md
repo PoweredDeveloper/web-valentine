@@ -40,7 +40,7 @@ From the project root (same folder as `docker-compose.yml` and `.env`):
 docker compose up -d --build
 ```
 
-The app is served on **port 80** via nginx (which proxies to the FastAPI app). Env vars are loaded from `.env` next to `docker-compose.yml`; the file is not baked into the image.
+The app is served on **port 80** via nginx: static HTML/CSS/JS are served by nginx; only `/api/*` is proxied to the FastAPI app. Env vars are loaded from `.env` next to `docker-compose.yml`; the file is not baked into the image.
 
 Optional: for HTTPS, put certs in `/opt/ssl` and adjust `nginx/nginx.conf` as needed.
 
