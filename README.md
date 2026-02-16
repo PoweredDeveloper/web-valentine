@@ -4,7 +4,7 @@
 
 A single-page “Will you be my valentine?” site. One tap for yes, one for no. **Yes** sends you a Telegram notification and triggers confetti; **No** asks for confirmation twice. Built for a bit of fun, not for production hardening.
 
-**Stack:** FastAPI, static HTML/CSS/JS, Aiogram (Telegram), optional Docker + nginx. **Requires Python 3.12+.**
+**Stack:** FastAPI, static HTML/CSS/JS, Aiogram (Telegram), Docker. **Requires Python 3.12+.**
 
 ---
 
@@ -40,9 +40,7 @@ From the project root (same folder as `docker-compose.yml` and `.env`):
 docker compose up -d --build
 ```
 
-The app is served on **port 80** via nginx: static HTML/CSS/JS are served by nginx; only `/api/*` is proxied to the FastAPI app. Env vars are loaded from `.env` next to `docker-compose.yml`; the file is not baked into the image.
-
-Optional: for HTTPS, put certs in `/opt/ssl` and adjust `nginx/nginx.conf` as needed.
+The container joins an external `proxy-net` Docker network and expects a global reverse proxy (e.g. nginx-proxy) to handle SSL termination and routing. The app itself exposes no ports. Env vars are loaded from `.env` next to `docker-compose.yml`; the file is not baked into the image.
 
 ---
 
@@ -64,8 +62,6 @@ Optional: for HTTPS, put certs in `/opt/ssl` and adjust `nginx/nginx.conf` as ne
 │   ├── web.py       # FastAPI app, static mount, API routes
 │   ├── telegram_bot.py
 │   └── static/      # index.html, style.css, main.js, assets
-├── nginx/
-│   └── nginx.conf
 ├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
